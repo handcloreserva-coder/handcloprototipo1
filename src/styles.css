@@ -254,6 +254,7 @@
 .hc .tb-tray-data { font-size: 8px; color: rgba(0,0,0,.5); font-weight: 400; }
 .hc .tb-look { display: flex; align-items: center; justify-content: center; height: 48px; width: 60px; background: var(--azc); border: 2.5px solid #000; border-radius: 6px; cursor: pointer; position: relative; box-shadow: 2px 2px 0 #000; flex-shrink: 0; -webkit-tap-highlight-color: transparent; }
 .hc .tb-look:active { transform: scale(.96); }
+.hc .closet-drawer { position: absolute; right: 0; top: 0; bottom: 0; z-index: 50; width: 60%; max-width: 60%; background: #fff; border-left: 2px solid var(--bx); box-shadow: -4px 0 16px rgba(0,0,0,.2); display: flex; flex-direction: column; transform: translateX(100%); transition: transform .25s ease; }
 .hc .closet-drawer.aberto { transform: translateX(0); }
 .hc .closet-drawer-header { padding: 6px 8px; background: var(--am); border-bottom: 1px solid rgba(0,0,0,.1); display: flex; align-items: center; justify-content: space-between; }
 .hc .closet-drawer-title { font-size: 10px; font-weight: 700; color: rgba(30,10,40,.75); font-family: 'Anonymous Pro', monospace; }
