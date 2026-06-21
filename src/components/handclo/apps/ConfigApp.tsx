@@ -1,33 +1,36 @@
 import { useState } from "react";
+import { useStore } from "../store-context";
 
 const ABAS = ["conta", "closet", "notif.", "clō"];
 
-const CONTA: [string, string][] = [["idioma", "pt-br"], ["moeda", "r$"], ["tema", "jeans claro"], ["fuso", "gmt -3"]];
-const CLOSET: [string, string][] = [["categorias visíveis", "7 de 9"], ["ordem dos carrosséis", "personalizar →"], ["peças por linha", "3"], ["mostrar preços", "sim"]];
-const NOTIF: [string, string][] = [["lembretes de uso", "on"], ["alertas de viagem", "on"], ["sugestões clō", "on"], ["resumo semanal", "off"]];
-const CLO: [string, string][] = [["personalidade clō", "direta"], ["idioma clō", "pt-br"], ["mostrar clō no desktop", "sempre"], ["clō.x acumulados", "42 pts"]];
+const selStyle: React.CSSProperties = { fontSize: 9, padding: "2px 5px", border: "1.5px solid #000", borderRadius: 2, background: "#fff", fontFamily: "DM Mono, monospace" };
 
-function Linha({ k, v }: { k: string; v: string }) {
+function LinhaSelect({ k, value, options, onChange }: { k: string; value: string; options: string[]; onChange: (v: string) => void }) {
   return (
     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "7px 0", borderBottom: "1px solid rgba(0,0,0,.06)" }}>
       <span style={{ fontSize: 9 }}>{k}</span>
-      <span style={{ fontSize: 9, color: "#888" }}>{v}</span>
+      <select value={value} onChange={(e) => onChange(e.target.value)} style={selStyle}>
+        {options.map((o) => <option key={o} value={o}>{o}</option>)}
+      </select>
     </div>
   );
 }
 
-function Toggle({ k, on }: { k: string; on: boolean }) {
+function Toggle({ k, on, onToggle }: { k: string; on: boolean; onToggle: () => void }) {
   return (
     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "7px 0", borderBottom: "1px solid rgba(0,0,0,.06)" }}>
       <span style={{ fontSize: 9 }}>{k}</span>
-      <div style={{ width: 28, height: 14, background: on ? "#81215B" : "#ccc", borderRadius: 7, border: "1.5px solid #000", position: "relative" }}>
+      <button onClick={onToggle} style={{ width: 28, height: 14, background: on ? "#81215B" : "#ccc", borderRadius: 7, border: "1.5px solid #000", position: "relative", cursor: "pointer", padding: 0 }}>
         <div style={{ width: 10, height: 10, background: "#fff", borderRadius: "50%", position: "absolute", top: 1, [on ? "right" : "left"]: 1 } as React.CSSProperties} />
-      </div>
+      </button>
     </div>
   );
 }
 
 export default function ConfigApp() {
+  const { config } = useStore();
+  const c = config.config;
+  const set = config.atualizar;
   const [aba, setAba] = useState(0);
 
   return (
@@ -53,12 +56,25 @@ export default function ConfigApp() {
                 <div style={{ fontSize: 8, color: "#888" }}>plano handclō pro</div>
               </div>
             </div>
-            {CONTA.map(([k, v]) => <Linha key={k} k={k} v={v} />)}
+            <LinhaSelect k="idioma" value={c.idioma} options={["pt-br", "en", "es"]} onChange={(v) => set({ idioma: v })} />
+            <LinhaSelect k="moeda" value={c.moeda} options={["r$", "us$", "€"]} onChange={(v) => set({ moeda: v })} />
+            <LinhaSelect k="tema" value={c.tema} options={["jeans claro", "jeans escuro"]} onChange={(v) => set({ tema: v })} />
           </>
         )}
-        {aba === 1 && CLOSET.map(([k, v]) => <Linha key={k} k={k} v={v} />)}
-        {aba === 2 && NOTIF.map(([k, v]) => <Toggle key={k} k={k} on={v === "on"} />)}
-        {aba === 3 && CLO.map(([k, v]) => <Linha key={k} k={k} v={v} />)}
+        {aba === 1 && (
+          <LinhaSelect k="peças por linha" value={String(c.pecasPorLinha)} options={["2", "3", "4"]} onChange={(v) => set({ pecasPorLinha: Number(v) })} />
+        )}
+        {aba === 2 && (
+          <>
+            <Toggle k="lembretes de uso" on={c.lembretes} onToggle={() => set({ lembretes: !c.lembretes })} />
+            <Toggle k="alertas de viagem" on={c.alertasViagem} onToggle={() => set({ alertasViagem: !c.alertasViagem })} />
+            <Toggle k="sugestões clō" on={c.sugestoesClo} onToggle={() => set({ sugestoesClo: !c.sugestoesClo })} />
+            <Toggle k="resumo semanal" on={c.resumoSemanal} onToggle={() => set({ resumoSemanal: !c.resumoSemanal })} />
+          </>
+        )}
+        {aba === 3 && (
+          <LinhaSelect k="personalidade clō" value={c.personalidadeClo} options={["direta", "gentil", "divertida"]} onChange={(v) => set({ personalidadeClo: v })} />
+        )}
       </div>
     </div>
   );
