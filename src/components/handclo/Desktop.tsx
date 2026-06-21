@@ -93,7 +93,7 @@ export default function Desktop() {
 
             <div className="tb-sep" />
 
-            <button className="tb-btn" title="provador">
+            <button className="tb-btn" title="provador" onClick={() => abrir("provador")}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 7H4a1 1 0 00-1 1v8a1 1 0 001 1h16a1 1 0 001-1V8a1 1 0 00-1-1z" /><line x1="12" y1="7" x2="12" y2="17" /></svg>
             </button>
 
