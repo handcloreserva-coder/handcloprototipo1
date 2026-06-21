@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { LIMITE_IMG, lerArquivoComoDataURL, novoId } from "@/lib/handcloStore";
+import { LIMITE_IMG, lerArquivoComoDataURL } from "@/lib/handcloStore";
 import { useStore } from "../store-context";
 
 const SEED_LOOKS = [
@@ -82,5 +82,3 @@ export default function ArquivoApp() {
     </div>
   );
 }
-
-export { novoId };
