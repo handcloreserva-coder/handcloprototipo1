@@ -51,7 +51,7 @@ function useCountdown() {
   return { dias: p(dias), horas: p(horas), min: p(min), perto };
 }
 
-export default function OfficeDrawer({ aberto, onClose }: { aberto: boolean; onClose: () => void }) {
+export default function OfficeDrawer({ aberto, onToggle, onClose }: { aberto: boolean; onToggle: () => void; onClose: () => void }) {
   const [detalhe, setDetalhe] = useState<DetalheId | null>(null);
   const [cloVisivel, setCloVisivel] = useState(true);
   const [conviteEstado, setConviteEstado] = useState<"aberto" | "saindo" | "fechado">("aberto");
@@ -263,7 +263,7 @@ export default function OfficeDrawer({ aberto, onClose }: { aberto: boolean; onC
 
   return (
     <>
-      <div className="office-tab" onClick={() => onClose()}>
+      <div className="office-tab" onClick={onToggle}>
         {!aberto && <div className="office-ponto" />}
         <svg width="12" height="20" viewBox="0 0 14 24" fill="none" style={{ transform: aberto ? "scaleX(-1)" : "none" }}>
           <path d="M13 20 Q7 14 1 20" stroke="rgba(255,255,255,.8)" strokeWidth="1.1" fill="none" strokeLinecap="round" />
