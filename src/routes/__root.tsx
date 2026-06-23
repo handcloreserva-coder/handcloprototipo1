@@ -87,8 +87,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "handclo system" },
       { name: "twitter:description", content: "ecosystem prototipe" },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/SOaqqf62ujPjF5ZoCXa867Jw0oP2/social-images/social-1782029852816-WhatsApp_Image_2026-06-16_at_02.02.13.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/SOaqqf62ujPjF5ZoCXa867Jw0oP2/social-images/social-1782029852816-WhatsApp_Image_2026-06-16_at_02.02.13.webp" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/SOaqqf62ujPjF5ZoCXa867Jw0oP2/social-images/social-1782184251310-WhatsApp_Image_2026-06-23_at_00.03.20.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/SOaqqf62ujPjF5ZoCXa867Jw0oP2/social-images/social-1782184251310-WhatsApp_Image_2026-06-23_at_00.03.20.webp" },
     ],
     links: [
       {
