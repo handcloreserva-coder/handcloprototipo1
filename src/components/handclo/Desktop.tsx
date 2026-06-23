@@ -10,6 +10,7 @@ import DesktopIcons from "./DesktopIcons";
 import WindowManager from "./WindowManager";
 import CloAssistant from "./CloAssistant";
 import ClosetDrawer from "./ClosetDrawer";
+import OfficeDrawer from "./OfficeDrawer";
 import type { AppKey } from "./apps/registry";
 
 function useRelogio() {
@@ -34,6 +35,7 @@ export default function Desktop() {
   const { hora, data } = useRelogio();
   const [openApps, setOpenApps] = useState<AppKey[]>([]);
   const [closetAberto, setClosetAberto] = useState(false);
+  const [officeAberto, setOfficeAberto] = useState(false);
   const [cloVisivel, setCloVisivel] = useState(true);
 
   function abrir(key: AppKey) {
@@ -71,6 +73,8 @@ export default function Desktop() {
             </div>
 
             <ClosetDrawer aberto={closetAberto} onClose={() => setClosetAberto(false)} />
+
+            <OfficeDrawer aberto={officeAberto} onToggle={() => setOfficeAberto((v) => !v)} onClose={() => setOfficeAberto(false)} />
 
             <WindowManager openApps={openApps} onClose={fechar} onFocus={focar} />
 
