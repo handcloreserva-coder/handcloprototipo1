@@ -328,9 +328,21 @@
 .hc .clo-momento-texto b { color: var(--mg); }
 .hc .clo-momento-x { position: absolute; top: 4px; right: 6px; font-size: 10px; color: rgba(0,0,0,.4); cursor: pointer; padding: 2px 4px; }
 
-.hc .office-scroll { flex: 1; overflow-y: auto; padding: 12px 14px 24px; scrollbar-width: thin; scrollbar-color: #000 transparent; }
 .hc .office-scroll::-webkit-scrollbar { width: 4px; }
 .hc .office-scroll::-webkit-scrollbar-thumb { background: #000; }
+
+/* ===== ZONA DE URGÊNCIA ===== */
+.hc .hub-urgente { background: #000; color: #fff; padding: 14px 14px 16px; }
+.hc .hub-urgente-label { font-size: 10px; font-weight: 700; letter-spacing: .4px; color: #fff; margin-bottom: 4px; }
+.hc .hub-item { background: #fff; color: #000; border-radius: 6px; padding: 9px 10px; margin-top: 8px; cursor: pointer; }
+.hc .hub-item-origem { font-size: 7px; font-weight: 700; color: rgba(0,0,0,.4); letter-spacing: .3px; margin-bottom: 3px; }
+.hc .hub-item.card-marca-mini.shimmer { margin-top: 8px; }
+
+/* ===== ZONA DE HISTÓRICO ===== */
+.hc .hub-historico { padding: 14px; background: #fff; }
+.hc .hub-historico-label { font-size: 9px; font-weight: 700; color: rgba(0,0,0,.4); letter-spacing: .3px; margin-bottom: 10px; }
+.hc .hub-historico-sub { margin-top: 18px; }
+.hc .hub-historico-sub-label { font-size: 8px; font-weight: 700; color: rgba(0,0,0,.4); margin-bottom: 6px; }
 
 .hc .office-sec { margin-top: 16px; }
 .hc .office-sec:first-child { margin-top: 0; }
