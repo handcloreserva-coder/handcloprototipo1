@@ -394,6 +394,8 @@
 .hc .desafio-barra-row { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
 
 .hc .pendente-nota { margin-top: 8px; font-size: 8px; color: rgba(0,0,0,.3); font-style: italic; }
+.hc .beneficio-nome { font-size: 11px; font-weight: 700; }
+.hc .beneficio-prazo { font-size: 8px; color: rgba(0,0,0,.4); margin-top: 1px; }
 
 .hc .office-detalhe { position: absolute; inset: 0; background: #fff; z-index: 60; display: flex; flex-direction: column; transform: translateX(100%); transition: transform .22s ease-out; }
 .hc .office-detalhe.ativo { transform: translateX(0); }
