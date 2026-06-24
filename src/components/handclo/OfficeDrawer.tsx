@@ -304,8 +304,57 @@ export default function OfficeDrawer({ aberto, onToggle, onClose }: { aberto: bo
           )}
 
           <div className="office-scroll">
-            <div className="office-sec">
-              <span className="office-sec-tag">resumo do mês</span>
+            {/* ZONA 1: PRECISA DE VOCÊ */}
+            <div className="hub-urgente">
+              <div className="hub-urgente-label">precisa de você</div>
+
+              {conviteEstado !== "fechado" && (
+                <div className={`hub-item card-marca-mini shimmer${conviteEstado === "saindo" ? " saindo" : ""}`} style={{ marginTop: 0 }} onClick={() => abrirDetalhe("convite-detalhado")}>
+                  <div className="hub-item-origem">parcerias</div>
+                  <div className="exclusivo-tag">exclusivo</div>
+                  <div className="card-marca-mini-topo">
+                    <div className="card-marca-logo-mini">R</div>
+                    <div className="card-marca-nome-mini">Renner</div>
+                  </div>
+                  <div className="card-marca-desc-mini">toque para revelar os termos da parceria.</div>
+                  <div className="card-marca-acoes-mini">
+                    <div className="btn-mini aceitar" onClick={aceitarConvite}>aceitar</div>
+                    <div className="btn-mini recusar" onClick={recusarConvite}>recusar</div>
+                  </div>
+                </div>
+              )}
+
+              <div className="hub-item" onClick={() => abrirDetalhe("desafio-andamento")}>
+                <div className="hub-item-origem">desafios</div>
+                <div className="desafio-titulo-row"><div className="desafio-titulo">3 looks com a Youcom</div></div>
+                <div className="desafio-meta" style={{ alignItems: "flex-end", marginBottom: 0 }}>
+                  <div>
+                    <div className="countdown-row">
+                      <div className={`countdown-num${cd.perto ? " perto" : ""}`}>{cd.dias}</div><span className="countdown-sep">:</span>
+                      <div className={`countdown-num${cd.perto ? " perto" : ""}`}>{cd.horas}</div><span className="countdown-sep">:</span>
+                      <div className={`countdown-num${cd.perto ? " perto" : ""}`}>{cd.min}</div>
+                    </div>
+                    <div className="countdown-label">dias : horas : min</div>
+                  </div>
+                  <div className="desafio-recompensa"><HcoinSvg /><span>+200 hcōin</span></div>
+                </div>
+                <div className="pendente-nota" style={{ marginTop: 6 }}>2 de 3 looks já publicados · checklist completo na tela de detalhe</div>
+              </div>
+
+              <div className="hub-item beneficio-destaque" style={{ marginTop: 8 }} onClick={() => abrirDetalhe("resgate-confirmar")}>
+                <div>
+                  <div className="hub-item-origem">benefícios</div>
+                  <div className="beneficio-nome">15% off Renner</div>
+                  <div className="beneficio-prazo">resgatar até 30/06</div>
+                </div>
+                <div className="beneficio-destaque-cta">resgatar</div>
+              </div>
+            </div>
+
+            {/* ZONA 2: SEU HISTÓRICO */}
+            <div className="hub-historico">
+              <div className="hub-historico-label">seu histórico</div>
+
               <div className="card-resumo" onClick={() => abrirDetalhe("dashboard-resumo")}>
                 <div className="resumo-numero">435 dados</div>
                 <div className="resumo-rank-bar"><div className="resumo-rank-fill" style={{ width: "82%" }} /></div>
@@ -328,89 +377,47 @@ export default function OfficeDrawer({ aberto, onToggle, onClose }: { aberto: bo
                 </div>
               </div>
               <div className="aviso-transparencia" onClick={() => abrirDetalhe("controle-transparencia")}>o que as marcas parceiras veem: alcance dos looks e engajamento. nunca dados individuais sem agregação. <b>toque pra controlar →</b></div>
-            </div>
 
-            <div className="office-sec">
-              <span className="office-sec-tag">parcerias</span>
-              {conviteEstado !== "fechado" && (
-                <div className={`card-marca-mini shimmer${conviteEstado === "saindo" ? " saindo" : ""}`} onClick={() => abrirDetalhe("convite-detalhado")}>
-                  <div className="exclusivo-tag">exclusivo</div>
-                  <div className="card-marca-mini-topo">
-                    <div className="card-marca-logo-mini">R</div>
-                    <div className="card-marca-nome-mini">Renner</div>
-                  </div>
-                  <div className="card-marca-desc-mini">toque para revelar os termos da parceria.</div>
-                  <div className="card-marca-acoes-mini">
-                    <div className="btn-mini aceitar" onClick={aceitarConvite}>aceitar</div>
-                    <div className="btn-mini recusar" onClick={recusarConvite}>recusar</div>
-                  </div>
+              <div className="hub-historico-sub">
+                <div className="hub-historico-sub-label">parcerias fechadas</div>
+                <div className="colecao-grid">
+                  <div className="colecao-circulo cheio" onClick={() => abrirDetalhe("historico-youcom")} style={{ fontSize: 9, fontWeight: 700 }}>Y</div>
+                  <div className="colecao-circulo cheio" onClick={() => abrirDetalhe("historico-riachuelo")} style={{ fontSize: 9, fontWeight: 700 }}>R</div>
+                  <div className="colecao-circulo mais" onClick={() => abrirDetalhe("lista-parcerias")}>+4</div>
+                  {rennerAtiva ? (
+                    <div className="colecao-circulo cheio nova" onClick={() => abrirDetalhe("historico-renner")} style={{ fontSize: 9, fontWeight: 700 }}>R</div>
+                  ) : (
+                    <div className="colecao-circulo vazio" onClick={() => abrirDetalhe("convite-detalhado")}>+</div>
+                  )}
                 </div>
-              )}
-              <div style={{ marginTop: 12, fontSize: 8, color: "rgba(0,0,0,.4)" }}>coleção de marcas</div>
-              <div className="colecao-grid">
-                <div className="colecao-circulo cheio" onClick={() => abrirDetalhe("historico-youcom")} style={{ fontSize: 9, fontWeight: 700 }}>Y</div>
-                <div className="colecao-circulo cheio" onClick={() => abrirDetalhe("historico-riachuelo")} style={{ fontSize: 9, fontWeight: 700 }}>R</div>
-                <div className="colecao-circulo mais" onClick={() => abrirDetalhe("lista-parcerias")}>+4</div>
-                {rennerAtiva ? (
-                  <div className="colecao-circulo cheio nova" onClick={() => abrirDetalhe("historico-renner")} style={{ fontSize: 9, fontWeight: 700 }}>R</div>
-                ) : (
-                  <div className="colecao-circulo vazio" onClick={() => abrirDetalhe("convite-detalhado")}>+</div>
-                )}
+                <div className="colecao-legenda">{rennerAtiva ? "7 parcerias ativas" : "6 parcerias ativas · 1 nova disponível"}</div>
               </div>
-              <div className="colecao-legenda">{rennerAtiva ? "7 parcerias ativas" : "6 parcerias ativas · 1 nova disponível"}</div>
-            </div>
 
-            <div className="office-sec">
-              <span className="office-sec-tag">desafios</span>
-              <div className="card-desafio">
-                <div className="desafio-clicavel" onClick={() => abrirDetalhe("desafio-andamento")}>
-                  <div className="desafio-titulo-row"><div className="desafio-titulo">3 looks com a Youcom</div></div>
-                  <div className="desafio-meta" style={{ alignItems: "flex-end" }}>
-                    <div>
-                      <div className="countdown-row">
-                        <div className={`countdown-num${cd.perto ? " perto" : ""}`}>{cd.dias}</div><span className="countdown-sep">:</span>
-                        <div className={`countdown-num${cd.perto ? " perto" : ""}`}>{cd.horas}</div><span className="countdown-sep">:</span>
-                        <div className={`countdown-num${cd.perto ? " perto" : ""}`}>{cd.min}</div>
-                      </div>
-                      <div className="countdown-label">dias : horas : min</div>
+              <div className="hub-historico-sub">
+                <div className="hub-historico-sub-label">desafios completados</div>
+                <div className="card-desafio">
+                  <div className="desafio-clicavel" onClick={() => abrirDetalhe("desafio-completo")}>
+                    <div className="desafio-titulo-row">
+                      <div className="desafio-titulo">indicar 1 amiga pro app</div>
+                      <div className="selo-conquistado">✓ conquistado</div>
                     </div>
-                    <div className="desafio-recompensa"><HcoinSvg /><span>+200 hcōin</span></div>
+                    <div className="desafio-meta">
+                      <span>concluído em 14/06</span>
+                      <div className="desafio-recompensa"><HcoinSvg /><span>+100 hcōin</span></div>
+                    </div>
                   </div>
-                </div>
-                <div className="desafio-check feito"><div className="box" />look 1 publicado</div>
-                <div className="desafio-check feito"><div className="box" />look 2 publicado</div>
-                <div className="desafio-check"><div className="box" />look 3 pendente</div>
-                <div className="desafio-barra-row">
-                  <div className="desafio-barra-track"><div className="desafio-barra-fill" style={{ width: "66%" }} /></div>
                 </div>
               </div>
 
-              <div className="card-desafio">
-                <div className="desafio-clicavel" onClick={() => abrirDetalhe("desafio-completo")}>
-                  <div className="desafio-titulo-row">
-                    <div className="desafio-titulo">indicar 1 amiga pro app</div>
-                    <div className="selo-conquistado">✓ conquistado</div>
-                  </div>
-                  <div className="desafio-meta">
-                    <span>concluído em 14/06</span>
-                    <div className="desafio-recompensa"><HcoinSvg /><span>+100 hcōin</span></div>
-                  </div>
+              <div className="hub-historico-sub">
+                <div className="hub-historico-sub-label">benefícios resgatados</div>
+                <div className="trofeu-strip" style={{ marginTop: 0 }}>
+                  <MedalhaSvg className="trofeu-icone" />
+                  <MedalhaSvg className="trofeu-icone" />
+                  <MedalhaSvg className="trofeu-icone" />
                 </div>
+                <div className="trofeu-legenda">3 benefícios resgatados até hoje</div>
               </div>
-            </div>
-
-            <div className="office-sec">
-              <span className="office-sec-tag sucesso">benefícios</span>
-              <div className="beneficio-destaque" onClick={() => abrirDetalhe("resgate-confirmar")}>
-                <div><div className="resumo-numero" style={{ fontSize: 11 }}>15% off Renner</div><div style={{ fontSize: 8, color: "rgba(0,0,0,.4)" }}>resgatar até 30/06</div></div>
-                <div className="beneficio-destaque-cta">resgatar</div>
-              </div>
-              <div className="trofeu-strip">
-                <MedalhaSvg className="trofeu-icone" />
-                <MedalhaSvg className="trofeu-icone" />
-                <MedalhaSvg className="trofeu-icone" />
-              </div>
-              <div className="trofeu-legenda">3 benefícios resgatados até hoje</div>
             </div>
           </div>
         </div>
