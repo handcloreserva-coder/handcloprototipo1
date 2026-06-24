@@ -12,8 +12,4 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
-  // Force Nitro on so a server build is always produced. Inside Lovable the
-  // preset is forced to Cloudflare; on Vercel this `preset` pins the Vercel
-  // target so the published root and all routes are served correctly.
-  nitro: { preset: "vercel" },
 });
