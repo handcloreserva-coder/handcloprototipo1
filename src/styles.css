@@ -328,6 +328,7 @@
 .hc .clo-momento-texto b { color: var(--mg); }
 .hc .clo-momento-x { position: absolute; top: 4px; right: 6px; font-size: 10px; color: rgba(0,0,0,.4); cursor: pointer; padding: 2px 4px; }
 
+.hc .office-scroll { flex: 1; overflow-y: auto; padding: 0 0 16px; scrollbar-width: thin; scrollbar-color: #000 transparent; }
 .hc .office-scroll::-webkit-scrollbar { width: 4px; }
 .hc .office-scroll::-webkit-scrollbar-thumb { background: #000; }
 
